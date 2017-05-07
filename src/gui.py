@@ -1,6 +1,7 @@
-from Tkinter import *
-import json, urllib
-from urllib import urlencode
+from tkinter import *
+import json
+from urllib.request import urlopen
+from urllib.parse import urlencode
 from googlemaps import Client
 import webbrowser
 
@@ -16,7 +17,7 @@ class Application(Frame):
                     ('origin', start),
                     ('destination', finish)
          ))
-        ur = urllib.urlopen(url)
+        ur = urlopen(url)
         result = json.load(ur)
         for i in range (0, len (result['routes'][0]['legs'][0]['steps'])):
             j = result['routes'][0]['legs'][0]['steps'][i]['html_instructions']
